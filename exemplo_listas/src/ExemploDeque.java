@@ -12,5 +12,7 @@ public class ExemploDeque {
         int primeiro = deque.removeFirst(); // Remove do início (10)
         int ultimo = deque.removeLast(); // Remove do fim (20)
 
+        System.out.println(primeiro + ultimo);
+
     }
 }

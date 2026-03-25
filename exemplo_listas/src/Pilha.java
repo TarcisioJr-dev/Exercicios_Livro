@@ -11,18 +11,35 @@ public class Pilha {
         if (topo < elementos.length - 1){
             topo ++; //Sobe o ponteiro do topo
             elementos[topo] = valor; // Guarda o valor na nova posição
+            System.out.println("Valor inserido na PILHA com sucesso.\n");
+            System.out.printf("O valor inserido foi: %s", valor);
         }
+
     }
 
     public int desempilhar(){
-        if (topo != -1) {
-            int valor = elementos[topo]; //Pega o valor do topo
-            topo--; // Desce o ponteiro, "esquecendo" o valor anterior
-            return valor;
-        }
-        return -1;
+
+        int valor = elementos[topo]; //Pega o valor do topo
+        topo--; // Desce o ponteiro, "esquecendo" o valor anterior
+        System.out.println("Valor deletado com sucesso.\n");
+        return valor;
+
     }
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+
+    public boolean estaVazia() {
+        return (topo == -1);
+    }
+
+    public void exibirPilha(){
+        if (topo == -1){
+            System.out.println("A pilha está vazia!");
+        } else {
+            System.out.println("\n--- Conteúdo da Pilha (Topo para Base) ---");
+            // O loop começa no 'topo' e vai descendo até o 0
+            for (int i = topo; i >= 0; i--){
+                System.out.printf("| %s | %n", elementos[i]);
+            }
+            System.out.println("----------");
+        }
     }
 }

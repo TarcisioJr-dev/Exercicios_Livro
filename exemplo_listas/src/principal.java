@@ -14,6 +14,8 @@ public class principal {
 
         Scanner leitor = new Scanner(System.in);
 
+        Pilha minhaPilha = null;
+
         boolean loop = true;
 
         while (loop) {
@@ -55,17 +57,50 @@ public class principal {
                                     entrada = leitor.nextLine();
                                     try {
                                         int tamanhoPilha = Integer.parseInt(entrada);
-                                        Pilha minhaPilha = new Pilha(tamanhoPilha);
-                                        System.out.println("Sua pilha foi criada com %d espaços", tamanhoPilha);
+                                        minhaPilha = new Pilha(tamanhoPilha);
+                                        System.out.println("\n");
+                                        System.out.printf("Sua pilha foi criada com %d espaços", tamanhoPilha);
                                         
                                     } catch (NumberFormatException e) {
                                         System.out.println("[ERRO] Você digitou um caractere inválido.");
                                         continue;
                                     }
-                                    
+                                    break;
+                                case 2:
+                                    if (minhaPilha == null) {
+                                        System.out.println("[ERRO] Você precisa criar a lista antes de adicionar valores a ela.");
+                                    } else {
+                                        System.out.println("Digite o que deseja inserir na pilha:");
+                                        entrada = leitor.nextLine();
+                                        int valorTamanho = Integer.parseInt(entrada);
+                                        minhaPilha.empilhar(valorTamanho);
+                                    }
+                                    break;
+
+                                case 3:
+                                    if (minhaPilha == null) {
+                                        System.out.println("[ERRO] Você precisa criar a lista antes de exibi-la.");
+                                    } else {
+                                        System.out.println("-----------");
+                                        minhaPilha.exibirPilha();
+                                    }
+                                    break;
+                                
+                                case 4:
+                                    if (minhaPilha == null) {
+                                        System.out.println("[ERRO] Para remover você tem que CRIAR a pilha");
+                                    } else if (minhaPilha.estaVazia()) {
+                                        System.out.println("[ERRO] A pilha existe, mas não tem nada para remover.");
+                                        System.out.println("ADICIONE valores para poder remover");
+                                    } else {
+                                        System.out.println("Estamos removendo o último item adicionado.");
+                                        int valorRemovido = minhaPilha.desempilhar();
+                                        System.out.printf("Removido: %d", valorRemovido);
+                                    }
                                     break;
                             
                                 default:
+                                    System.out.println("[ERRO] Opção inválida.");
                                     break;
                             }
                         } catch (NumberFormatException e) {
@@ -74,6 +109,12 @@ public class principal {
                         }
                         break;
                         
+                        case 2: //Fila
+                            break;
+                        case 3: // Lista encadeada
+                            break;
+                        case 4: // DEQUE
+                            break;
                         case 5: // Sair
                         System.out.println("Obrigado por utilizar este programa.");
                         loop = false;
