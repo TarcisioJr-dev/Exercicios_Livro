@@ -16,6 +16,7 @@ public class principal {
 
         Pilha minhaPilha = null;
         Fila minhaFila = null;
+        Lista_Encadeada minhaLista = null;
 
         boolean loop = true;
 
@@ -167,7 +168,47 @@ public class principal {
                             }
                             break;
                         case 3: // Lista encadeada
-                            System.out.println("[Aguarde] ainda está em construção");
+                            System.out.println("\n--- Opções de Lista Encadeada ---");
+                            System.out.println(" 1. Adicionar valor");
+                            System.out.println(" 2. Mostrar Lista");
+                            System.out.println(" 3. Retirar valor");
+                            System.out.println("Digite sua opção:");
+                            System.out.print("---> ");
+                            entrada = leitor.nextLine();
+                            try {
+                                int opcaoLista = Integer.parseInt(entrada);
+
+                                switch (opcaoLista) {
+                                    case 1: // Adicionar Valor
+                                        System.out.println("Digite o valor a ser inserido:");
+                                        System.out.println("---> ");
+                                        entrada = leitor.nextLine();
+                                        try {
+                                            int valorLista = Integer.parseInt(entrada);
+
+                                            minhaLista.inserir(valorLista);
+
+                                            System.out.printf("O valor %d foi inserido com sucesso.\n", valorLista);
+
+                                        } catch (Exception e) {
+                                            System.out.println("[ERRO] Valor digitado inválido.");
+                                        }
+                                        break;
+
+                                    case 2: // Mostrar Lista
+                                        minhaLista.mostrarLista();
+                                        break;
+
+                                    case 3: // Retirar valor
+                                        minhaLista.retirar();
+                                        break;
+                                    default:
+                                        System.out.println("[ERRO] Opção inválida.");
+                                        break;
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("[ERRO] valor digitado inválido");
+                            }
                             break;
                         case 4: // DEQUE
                             System.out.println("[Aguarde] ainda está em construção");
