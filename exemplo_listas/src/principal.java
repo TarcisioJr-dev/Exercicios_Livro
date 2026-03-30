@@ -15,6 +15,7 @@ public class principal {
         Scanner leitor = new Scanner(System.in);
 
         Pilha minhaPilha = null;
+        Fila minhaFila = null;
 
         boolean loop = true;
 
@@ -51,7 +52,7 @@ public class principal {
                             int opcaoPilha = Integer.parseInt(entrada);
 
                             switch (opcaoPilha) {
-                                case 1:
+                                case 1: //Criação de Pilha
                                     System.out.println("Digite o tamanho da PILHA que deseja:");
                                     System.out.print("--> ");
                                     entrada = leitor.nextLine();
@@ -66,7 +67,7 @@ public class principal {
                                         continue;
                                     }
                                     break;
-                                case 2:
+                                case 2: //Adicionar valores na pilha
                                     if (minhaPilha == null) {
                                         System.out.println("[ERRO] Você precisa criar a lista antes de adicionar valores a ela.");
                                     } else {
@@ -77,7 +78,7 @@ public class principal {
                                     }
                                     break;
 
-                                case 3:
+                                case 3: // Exibir a pilha
                                     if (minhaPilha == null) {
                                         System.out.println("[ERRO] Você precisa criar a lista antes de exibi-la.");
                                     } else {
@@ -86,7 +87,7 @@ public class principal {
                                     }
                                     break;
                                 
-                                case 4:
+                                case 4: // Remover ultimo valor da pilha
                                     if (minhaPilha == null) {
                                         System.out.println("[ERRO] Para remover você tem que CRIAR a pilha");
                                     } else if (minhaPilha.estaVazia()) {
@@ -95,7 +96,7 @@ public class principal {
                                     } else {
                                         System.out.println("Estamos removendo o último item adicionado.");
                                         int valorRemovido = minhaPilha.desempilhar();
-                                        System.out.printf("Removido: %d", valorRemovido);
+                                        System.out.printf("Valor removido: %d", valorRemovido);
                                     }
                                     break;
                             
@@ -110,10 +111,66 @@ public class principal {
                         break;
                         
                         case 2: //Fila
+                            System.out.println("\n----- Menu de Fila -----");
+                            System.out.println(" 1. Criar Fila");
+                            System.out.println(" 2. Adicionar item");
+                            System.out.println(" 3. Mostrar Fila");
+                            System.out.println(" 4. Remover item");
+                            System.out.print("\n Digite sua opção: ");
+                            entrada = leitor.nextLine();
+
+                            try {
+                                int opcaoFila = Integer.parseInt(entrada);
+
+                                switch (opcaoFila) {
+                                    case 1: // Criar Fila
+                                        System.out.println("\nDigite o tamanho que deseja da lista:");
+                                        System.out.print("---> ");
+                                        entrada = leitor.nextLine();
+                                        try {
+                                            int tamanhoFila = Integer.parseInt(entrada);
+
+                                            minhaFila = new Fila(tamanhoFila);
+                                            System.out.printf("Sua fila com %d espaços foi criado", tamanhoFila);
+
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("[ERRO] Você digitou um caractere inválido.");
+                                        }
+                                        break;
+                                    case 2: // Adicionar item
+                                        System.out.println("Digite o valor que deseja inserir:");
+                                        System.out.print("---> ");
+                                        entrada = leitor.nextLine();
+                                        try {
+                                            int valorFila = Integer.parseInt(entrada);
+
+                                            minhaFila.enfileirar(valorFila);
+                                            System.out.printf("\nO valor %d foi inserido na lista.", valorFila);
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Valor inserido inválido.");
+                                        }
+                                        break;
+                                    case 3: // Mostrar Fila
+                                        minhaFila.mostrarFila();
+                                        break;
+                                    case 4: // Remover item
+                                        minhaFila.desenfileirar();
+                                        break;
+                                    default:
+                                        System.out.println("Opção inválida, escolha novamente.");
+                                        break;
+                                }
+
+                            } catch (NumberFormatException e) {
+                                System.out.println("[ERRO] Você digitou um caractere inválido.");
+                                continue;
+                            }
                             break;
                         case 3: // Lista encadeada
+                            System.out.println("[Aguarde] ainda está em construção");
                             break;
                         case 4: // DEQUE
+                            System.out.println("[Aguarde] ainda está em construção");
                             break;
                         case 5: // Sair
                         System.out.println("Obrigado por utilizar este programa.");
