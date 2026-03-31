@@ -17,6 +17,9 @@ public class principal {
         Pilha minhaPilha = null;
         Fila minhaFila = null;
         Lista_Encadeada minhaLista = null;
+        MeuDeque deque = new MeuDeque();
+
+        int insercaoDeque = 0;
 
         boolean loop = true;
 
@@ -211,7 +214,48 @@ public class principal {
                             }
                             break;
                         case 4: // DEQUE
-                            
+                            System.out.println("\n--- Menu de Opções DEQUE ---");
+                            System.out.println(" 1. Adicionar no COMEÇO");
+                            System.out.println(" 2. Adicionar no FIM");
+                            System.out.println(" 3. Remover no COMEÇO");
+                            System.out.println(" 4. Remover no FIM");
+                            System.out.println(" 5. Mostrar DEQUE");
+                            System.out.println(" Digite sua opção: ");
+                            System.out.print("---> ");
+                            entrada = leitor.nextLine();
+
+                            try {
+                                int opcaoDeque = Integer.parseInt(entrada);
+
+                                switch (opcaoDeque) {
+                                    case 1: // Adicionar no Começo
+                                        System.out.println("Digite o Número que deseja inserir no Começo:");
+                                        insercaoDeque = leitor.nextInt();
+
+                                        deque.adicionarInicio(insercaoDeque);
+                                        
+                                        leitor.nextLine();
+                                        break;
+                                    case 2: // Adicionar no Fim
+                                        
+                                        break;
+                                    case 3: // Remover no Começo
+                                        
+                                        break;
+                                    case 4: //Remover no Fim
+                                        
+                                        break;
+                                    case 5: //Mostrar Deque
+                                        
+                                        break;
+                                
+                                    default:
+                                        break;
+                                }
+
+                            } catch (NumberFormatException e) {
+                                System.out.println("[ERRO] Valor digitado inválido.");
+                            }
                             break;
                         case 5: // Sair
                         System.out.println("Obrigado por utilizar este programa.");
