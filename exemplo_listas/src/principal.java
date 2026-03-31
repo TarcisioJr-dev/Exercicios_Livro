@@ -211,7 +211,7 @@ public class principal {
                             }
                             break;
                         case 4: // DEQUE
-                            System.out.println("[Aguarde] ainda está em construção");
+                            
                             break;
                         case 5: // Sair
                         System.out.println("Obrigado por utilizar este programa.");
